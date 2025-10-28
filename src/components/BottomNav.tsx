@@ -1,3 +1,4 @@
+// src/components/BottomNav.tsx
 import { Link, useLocation } from "react-router-dom";
 import { Home, Trophy, User, Settings } from "lucide-react";
 
@@ -29,6 +30,5 @@ export default function BottomNav() {
         );
       })}
     </nav>
-
   );
 }

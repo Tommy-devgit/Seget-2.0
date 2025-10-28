@@ -1,3 +1,4 @@
+// src/App.tsx
 import Header from "./components/Header";
 import BottomNav from "./components/BottomNav";
 import { useAuth } from "./context/AuthContext";
@@ -11,11 +12,9 @@ import Signup from "./pages/Signup";
 import Forgot from "./pages/Forgot";
 
 export default function App() {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
 
-  // Simple loading state: user is null initially, may want to show spinner
-  if (user === undefined)
-    return <div className="text-center mt-20 text-white">Loading...</div>;
+  if (loading) return <div className="text-center mt-20 text-white">Loading...</div>;
 
   return (
     <Router>
