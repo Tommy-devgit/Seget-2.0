@@ -4,7 +4,6 @@ import { auth, db } from "../lib/firebaseConfig";
 import {
   onAuthStateChanged,
   signOut,
-  updateProfile as updateAuthProfile,
   type User,
 } from "firebase/auth";
 import {
@@ -13,7 +12,6 @@ import {
   getDoc,
   setDoc,
   type DocumentData,
-  DocumentReference,
 } from "firebase/firestore";
 
 type AuthContextType = {

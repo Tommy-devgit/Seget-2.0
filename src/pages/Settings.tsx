@@ -1,9 +1,8 @@
 // src/pages/Settings.tsx
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { db, auth } from "../lib/firebaseConfig";
+import { db } from "../lib/firebaseConfig";
 import { deleteDoc, doc } from "firebase/firestore";
-import { signOut } from "firebase/auth";
 
 export default function Settings() {
   const { user, logout } = useAuth();
@@ -13,11 +12,9 @@ export default function Settings() {
     if (!confirm("Are you sure you want to delete your account? This cannot be undone.")) return;
     if (!user) return;
 
-    // delete profile doc and sign out. Note: Deleting auth user requires admin privileges; here we remove profile and sign out.
     try {
       await deleteDoc(doc(db, "profiles", user.uid));
       await logout();
-      // Note: To permanently delete Auth user programmatically you'd need Admin SDK on a server or ask them to delete via Firebase console.
     } catch (err) {
       console.error("Failed to delete account:", err);
     }
